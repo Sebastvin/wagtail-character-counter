@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wagtail_character_counter"
+version = "0.0.1"
+authors = [
+  { name="Sebastvin", email="sebastian@kachange.eu" },
+]
+
+description = "A lightweight utility to add real-time character counting functionality to Wagtail's Draftail rich text editor."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+
+"Homepage" = "https://github.com/Sebastvin/wagtail-character-counter/"
+"Bug Tracker" = "https://github.com/Sebastvin/wagtail-character-counter/issues/"
