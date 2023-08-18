@@ -1,0 +1,2 @@
+include README.md
+recursive-include wagtail_character_counter/static *
