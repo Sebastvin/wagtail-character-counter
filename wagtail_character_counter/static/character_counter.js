@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+function initializeCharacterCounter() {
     // Locate the main editor container
     let editorWrapper = document.querySelector('.w-field--draftail_rich_text_area');
 
@@ -50,4 +50,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial update to set initial values
     updateCounter();
-});
+}
+
+
+// Function to initialize the mutation observer
+function initObserver() {
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+                // For each added node
+                for (let i = 0; i < mutation.addedNodes.length; i++) {
+                    const node = mutation.addedNodes[i];
+
+                    // If the new node contains our editor
+                    if (node.querySelector && node.querySelector('.w-field--draftail_rich_text_area')) {
+                        initializeCharacterCounter();
+                    }
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, {
+        childList: true,  // observe direct children
+        subtree: true,    // also observe all descendant nodes
+        attributes: false,
+        characterData: false,
+    });
+}
+
+window.addEventListener('load', initObserver);
