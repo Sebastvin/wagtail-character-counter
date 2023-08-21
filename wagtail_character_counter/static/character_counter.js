@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the character and word count in response to changes in the editor
     textField.addEventListener('input', updateCounter);
 
+    // Handle keydown event (especially backspace/delete)
+    textField.addEventListener('keydown', function(event) {
+        // Check for backspace or delete keys
+        if (event.keyCode === 8 || event.keyCode === 46) {
+            setTimeout(updateCounter, 50);
+        }
+    });
+
     // Handle pasted text with a delay
     textField.addEventListener('paste', function(event) {
         setTimeout(updateCounter, 50);  // Update the counter after a short delay
