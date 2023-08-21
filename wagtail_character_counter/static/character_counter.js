@@ -3,7 +3,10 @@ function initializeCharacterCounter() {
     let editorWrapper = document.querySelector('.w-field--draftail_rich_text_area');
 
     // If the editor container doesn't exist, exit the script.
-    if (!editorWrapper) return;
+    if (!editorWrapper) {
+        console.log("NOT WORK");
+        return;
+    }
 
     // Create an element for the character counter
     let charCounter = document.createElement('div');
@@ -80,3 +83,7 @@ function initObserver() {
 }
 
 window.addEventListener('load', initObserver);
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeCharacterCounter();
+})
