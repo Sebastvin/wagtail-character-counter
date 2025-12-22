@@ -4,9 +4,29 @@ function initializeCharacterCounter() {
 
     // If the editor container doesn't exist, exit the script.
     if (!editorWrapper) {
-        console.log("NOT WORK");
         return;
     }
+
+    // Avoid duplicate counters/bindings for the same editor instance.
+    if (editorWrapper.dataset.charCounterInitialized === 'true') {
+        return;
+    }
+
+    // Locate the contenteditable element
+    let textField = editorWrapper.querySelector('.DraftEditor-editorContainer [contenteditable="true"]');
+
+    // If the editor isn't ready yet, retry a few times.
+    if (!textField) {
+        const attempts = parseInt(editorWrapper.dataset.charCounterAttempts || '0', 10);
+        if (attempts < 20) {
+            editorWrapper.dataset.charCounterAttempts = String(attempts + 1);
+            setTimeout(initializeCharacterCounter, 100);
+        }
+        return;
+    }
+
+    editorWrapper.dataset.charCounterInitialized = 'true';
+    delete editorWrapper.dataset.charCounterAttempts;
 
     // Create an element for the character counter
     let charCounter = document.createElement('div');
@@ -19,9 +39,6 @@ function initializeCharacterCounter() {
     // Add the character and word counters directly below the editor container
     editorWrapper.parentNode.insertBefore(charCounter, editorWrapper.nextSibling);
     editorWrapper.parentNode.insertBefore(wordCounter, charCounter.nextSibling);
-
-    // Locate the contenteditable element
-    let textField = editorWrapper.querySelector('.DraftEditor-editorContainer [contenteditable="true"]');
 
     // Function to update the character and word count
     const updateCounter = () => {
