@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wagtail_character_counter"
-version = "0.0.3"
+version = "25.12.1"
 authors = [
   { name="Sebastvin", email="sebastian@kachange.eu" },
 ]
