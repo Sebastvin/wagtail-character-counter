@@ -4,14 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wagtail_character_counter"
-version = "25.12.1"
+version = "26.9.1"
 authors = [
   { name="Sebastvin", email="sebastian@kachange.eu" },
 ]
 
-description = "A lightweight utility to add real-time character counting functionality to Wagtail's Draftail rich text editor."
+description = "A lightweight extension that enables character counting in Draftail editor."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
+dependencies = [
+    "Django>=6.1.1",
+    "wagtail>=8.0",
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -19,6 +23,5 @@ classifiers = [
 ]
 
 [project.urls]
-
-"Homepage" = "https://github.com/Sebastvin/wagtail-character-counter/"
-"Bug Tracker" = "https://github.com/Sebastvin/wagtail-character-counter/issues/"
+"Homepage" = "https://github.com/Sebastvin/wagtail-character-counter"
+"Bug Tracker" = "https://github.com/Sebastvin/wagtail-character-counter/issues"
